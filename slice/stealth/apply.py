@@ -13,34 +13,28 @@ def build_stealth_script(profile: dict = None) -> str:
         profile: Fingerprint profile dict (from fingerprint.generator).
                  If None, uses sensible defaults.
     """
+    # Each module is wrapped in its own try/catch so one failure doesn't
+    # prevent other modules from running.
+    def _safe(name, code):
+        return f"""// === {name} ===
+(function() {{
+try {{
+{code.strip()}
+}} catch(e) {{ /* [slice] {name} error ignored */ }}
+}})();
+"""
+
     parts = [
         "// === STEALTH BROWSER INJECTION ===",
-        "// Navigator spoofing",
-        navigator.get_all_scripts(profile),
-        "",
-        "// Chrome API spoofing",
-        chrome.get_script(),
-        "",
-        "// WebGL spoofing",
-        webgl.get_script(profile),
-        "",
-        "// Canvas fingerprint noise",
-        canvas.get_script(profile),
-        "",
-        "// Audio fingerprint noise",
-        audio.get_script(profile),
-        "",
-        "// Screen dimensions",
-        screen.get_script(profile),
-        "",
-        "// Timezone/locale",
-        timezone.get_script(profile),
-        "",
-        "// User-Agent in JS",
-        headers.get_script(profile),
-        "",
-        "// Font enumeration",
-        fonts.get_script(profile),
+        _safe("Navigator", navigator.get_all_scripts(profile)),
+        _safe("Chrome API", chrome.get_script()),
+        _safe("WebGL", webgl.get_script(profile)),
+        _safe("Canvas", canvas.get_script(profile)),
+        _safe("Audio", audio.get_script(profile)),
+        _safe("Screen", screen.get_script(profile)),
+        _safe("Timezone", timezone.get_script(profile)),
+        _safe("User-Agent", headers.get_script(profile)),
+        _safe("Fonts", fonts.get_script(profile)),
     ]
     return "\n".join(parts)
 
@@ -58,6 +52,8 @@ async def apply_stealth(tab, profile: dict = None) -> str:
         The injected script identifier for later removal.
     """
     # 1. Inject all JS stealth scripts via addScriptToEvaluateOnNewDocument
+    # IMPORTANT: Do NOT use worldName — scripts must run in the MAIN world
+    # so that page JS sees the spoofed navigator/screen/etc. values.
     js = build_stealth_script(profile)
     identifier = await tab.add_script(js, run_at="document_start")
 

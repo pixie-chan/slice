@@ -2,7 +2,7 @@
 
 from .browser import Browser, Tab
 from .connection import CDPConnection, CDPError
-from .slice import StealthBrowser, StealthPage
+from .stealth_browser import StealthBrowser, StealthPage
 from .fingerprint.generator import generate_profile, load_profile, save_profile
 from .fingerprint.validator import validate_profile
 from .captcha.solver import CaptchaSolver

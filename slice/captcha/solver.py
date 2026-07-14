@@ -28,7 +28,7 @@ class CaptchaSolver:
         result = await connection.send(
             "Runtime.evaluate",
             {
-                "expression": """
+                "expression": r"""
                 (() => {
                     // reCAPTCHA
                     if (document.querySelector('.g-recaptcha') || document.querySelector('[data-sitekey]')) {
@@ -41,9 +41,29 @@ class CaptchaSolver:
                         return JSON.stringify({type: 'hcaptcha', selector: '.h-captcha', siteKey: el.getAttribute('data-sitekey') || el.getAttribute('data-hcaptcha-sitekey')});
                     }
                     // Cloudflare Turnstile
-                    if (document.querySelector('.cf-turnstile') || document.querySelector('[data-action="turnstile"]))')) {
+                    if (document.querySelector('.cf-turnstile') || document.querySelector('[data-action="turnstile"]') || document.querySelector('[data-callback="turnstileCallback"]')) {
                         const el = document.querySelector('.cf-turnstile');
-                        return JSON.stringify({type: 'turnstile', selector: '.cf-turnstile', siteKey: el ? el.getAttribute('data-sitekey') : ''});
+                        let siteKey = el ? el.getAttribute('data-sitekey') : '';
+                        // If no sitekey on DOM, try to extract from inline script
+                        if (!siteKey) {
+                            const scripts = document.querySelectorAll('script');
+                            for (const s of scripts) {
+                                const m = s.textContent.match(/turnstile\.render\s*\(\s*['"]([^'"]+)['"][^)]*['"]((?:0x)?[A-Za-z0-9_-]{10,})['"]/);
+                                if (m) { siteKey = m[2]; break; }
+                                const m2 = s.textContent.match(/['"](sitekey|site_key)['"]\s*:\s*['"]([^'"]+)['"]/);
+                                if (m2) { siteKey = m2[2]; break; }
+                            }
+                        }
+                        // If still no sitekey, try iframe src
+                        if (!siteKey) {
+                            const iframe = document.querySelector('iframe[src*="challenges.cloudflare.com"]');
+                            if (iframe) {
+                                const src = iframe.getAttribute('src');
+                                const m = src.match(/[?&]sitekey=([^&]+)/);
+                                if (m) siteKey = m[1];
+                            }
+                        }
+                        return JSON.stringify({type: 'turnstile', selector: '.cf-turnstile', siteKey: siteKey});
                     }
                     // Slider CAPTCHA (common patterns)
                     if (document.querySelector('.slider-captcha, .captcha-slider, #slider, [class*="slider"]')) {

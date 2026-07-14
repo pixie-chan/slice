@@ -64,7 +64,7 @@ async def main():
     profile = generate_profile(os="windows")
     vr = validate_profile(profile)
     print(f"\n  Fingerprint: {'VALID' if vr.is_valid else 'INVALID'}")
-    print(f"  Profile: {profile.get('navigator', {}).get('platform', 'unknown')}")
+    print(f"  Profile: {profile.get('platform', 'unknown')}")
     
     # Launch browser
     print("\n  Launching Slice...")

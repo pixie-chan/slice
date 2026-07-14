@@ -17,7 +17,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from slice.browser import Browser
-from slice.slice import StealthBrowser
+from slice.stealth_browser import StealthBrowser
 from slice.fingerprint.generator import generate_profile, save_profile, load_profile
 from slice.fingerprint.validator import validate_profile
 from slice.captcha.solver import CaptchaSolver

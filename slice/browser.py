@@ -35,6 +35,26 @@ CHROME_ARGS = [
     "--headless=new",
     "--window-size=1920,1080",
     "--disable-blink-features=AutomationControlled",
+    # Additional anti-detection hardening
+    "--disable-infobars",
+    "--disable-dev-shm-usage",
+    "--disable-features=ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate",
+    "--enable-features=NetworkService,NetworkServiceInProcess",
+    "--disable-ipc-flooding-protection",
+    "--disable-component-extensions-with-background-pages",
+    "--disable-breakpad",
+    "--disable-crash-reporter",
+    "--disable-component-update",
+    "--disable-domain-reliability",
+    "--disable-features=AudioServiceOutOfProcess",
+    "--disable-field-trial-config",
+    "--disable-backgrounding-occluded-windows",
+    "--disable-renderer-backgrounding",
+    "--enable-features=SharedArrayBuffer",
+    # Prevent Chrome from adding "Chrome is being controlled by automated software" banner
+    "--disable-blink-features=AutomationControlled",
+    "--force-color-profile=srgb",
+    "--disable-features=BlockInsecurePrivateNetworkRequests,PrivateNetworkAccessSendPreflights",
 ]
 
 
@@ -276,15 +296,23 @@ class Tab:
             raise RuntimeError(f"JS error: {remote_obj.get('description', 'unknown')}")
         return remote_obj
 
-    async def add_script(self, script: str, run_at: str = "document_start") -> str:
+    async def add_script(self, script: str, run_at: str = "document_start", world_name: str = None) -> str:
         """Inject a script that runs before every page load.
+
+        Args:
+            script: JS source code to inject
+            run_at: When to run ("document_start" or "document_end")
+            world_name: Named execution world for isolation (e.g. "__slice_stealth__")
 
         Returns:
             Script identifier for later removal.
         """
+        params = {"source": script, "runAt": run_at}
+        if world_name:
+            params["worldName"] = world_name
         result = await self.send(
             "Page.addScriptToEvaluateOnNewDocument",
-            {"source": script, "runAt": run_at},
+            params,
         )
         return result["identifier"]
 
