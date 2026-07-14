@@ -46,11 +46,28 @@ Every browser automation tool screams "I'M A BOT" the moment it touches a protec
 
 ## 🏆 Validation Results
 
-| 🎯 Target | ✅ Result | 📊 Details |
+### ✅ Fully Passed
+
+| 🎯 Target | 📊 Details |
+|:--|:--|
+| **bot.incolumitas.com** | Score: `0.00` — best possible, fully undetected |
+| **browserleaks.com** | All 18+ signals match profile, `webdriver: None` |
+| **github.com** | Full page load, no blocks, all content extracted |
+| **github.com/trending** | Full page load, no blocks |
+| **cloudflare.com** | Full page load, no blocks |
+| **news.ycombinator.com** | Full page load, no blocks |
+| **old.reddit.com** | Full page load, no blocks |
+| **amazon.com** | Full page load, no blocks |
+| **en.wikipedia.org** | Full page load, no blocks |
+
+### ⚠️ Partial / Known Limitations
+
+| 🎯 Target | 📊 Issue | 💡 Workaround |
 |:--|:--|:--|
-| **bot.incolumitas.com** | 🟢 Score: `0.00` | Best possible — fully undetected |
-| **nowsecure.nl** | 🟢 Passed | `"This browser has passed our bot detection test"` |
-| **browserleaks.com** | 🟢 All green | All signals match profile, `webdriver: None` |
+| **nowsecure.nl** | Cloudflare Turnstile challenge detected — page loads but challenge doesn't auto-resolve | Requires interactive CAPTCHA solving or human interaction |
+| **bot.incolumitas.com** (score) | Behavioral score computation needs page interaction time — shows "..." on static load | Add `--wait 15` or interact with the page before reading score |
+| **Cloudflare-protected sites** (general) | Turnstile/challenge pages load but don't auto-solve | Use `--solve-captcha` with 2Captcha API key for auto-solving |
+| **Sites with rate limiting** | Rapid sequential requests may trigger rate limits | Add `--wait 3-8` between requests, use proxy rotation |
 
 > *"0.00 means the bot detection engine found literally nothing suspicious. That's the goal."*
 
