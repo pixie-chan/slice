@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slice"
+version = "0.1.0"
+description = "From-scratch browser automation — bypass bot detection, solve CAPTCHAs, scrape protected sites. Raw CDP, zero framework fingerprints."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+keywords = ["browser", "automation", "cdp", "stealth", "fingerprint", "captcha", "scraping"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = [
+    "websockets>=12.0",
+    "aiohttp>=3.9",
+]
+
+[project.optional-dependencies]
+whisper = ["openai-whisper>=20231117"]
+all = ["openai-whisper>=20231117"]
+
+[project.scripts]
+slice = "slice.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["slice*"]

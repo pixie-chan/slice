@@ -1,0 +1,65 @@
+{
+  "os": "windows",
+  "browser": "chrome",
+  "browser_version": "126.0.0.0",
+  "platform": "Win32",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "screen": {
+    "width": 1920,
+    "height": 1080,
+    "avail_width": 1920,
+    "avail_height": 1040,
+    "device_pixel_ratio": 1
+  },
+  "locale": "en-US",
+  "timezone": "America/New_York",
+  "languages": [
+    "en-US",
+    "en"
+  ],
+  "webgl": {
+    "vendor": "Intel Inc.",
+    "renderer": "Intel Iris OpenGL Engine"
+  },
+  "hardware_concurrency": 4,
+  "device_memory": 8,
+  "plugins": [
+    "Chrome PDF Plugin",
+    "Chrome PDF Viewer",
+    "Native Client"
+  ],
+  "fonts": [
+    "Arial",
+    "Arial Black",
+    "Calibri",
+    "Cambria",
+    "Candara",
+    "Comic Sans MS",
+    "Consolas",
+    "Constantia",
+    "Corbel",
+    "Courier New",
+    "Georgia",
+    "Impact",
+    "Lucida Console",
+    "Microsoft Sans Serif",
+    "Palatino Linotype",
+    "Segoe UI",
+    "Segoe UI Light",
+    "Segoe UI Semibold",
+    "Tahoma",
+    "Times New Roman",
+    "Trebuchet MS",
+    "Verdana"
+  ],
+  "connection": {
+    "type": "wifi",
+    "effective_type": "4g",
+    "downlink": 10,
+    "rtt": 50
+  }
+}

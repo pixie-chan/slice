@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Chrome data
+chrome/
+user-data-dir/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Test artifacts
+*.png
+test_screenshot.png
+bot_test_screenshot.png
+browserleaks_screenshot.png
+nowsecure_screenshot.png
+pixelscan_screenshot.png
+
+# Logs
+*.log
+
+# Compiled
+*.so

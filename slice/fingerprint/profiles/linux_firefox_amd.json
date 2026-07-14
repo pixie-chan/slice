@@ -1,0 +1,58 @@
+{
+  "os": "linux",
+  "browser": "firefox",
+  "browser_version": "128.0",
+  "platform": "Linux x86_64",
+  "user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "screen": {
+    "width": 1920,
+    "height": 1080,
+    "avail_width": 1920,
+    "avail_height": 1052,
+    "device_pixel_ratio": 1
+  },
+  "locale": "en-US",
+  "timezone": "America/Chicago",
+  "languages": [
+    "en-US",
+    "en"
+  ],
+  "webgl": {
+    "vendor": "AMD",
+    "renderer": "AMD Radeon RX 580"
+  },
+  "hardware_concurrency": 8,
+  "device_memory": 16,
+  "plugins": [],
+  "fonts": [
+    "DejaVu Sans",
+    "DejaVu Sans Mono",
+    "DejaVu Serif",
+    "FreeMono",
+    "FreeSans",
+    "FreeSerif",
+    "Liberation Mono",
+    "Liberation Sans",
+    "Liberation Serif",
+    "Ubuntu",
+    "Ubuntu Condensed",
+    "Ubuntu Mono",
+    "Droid Sans",
+    "Droid Serif",
+    "Arial",
+    "Courier New",
+    "Georgia",
+    "Times New Roman",
+    "Verdana"
+  ],
+  "connection": {
+    "type": "ethernet",
+    "effective_type": "4g",
+    "downlink": 50,
+    "rtt": 20
+  }
+}

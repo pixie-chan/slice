@@ -1,0 +1,65 @@
+{
+  "os": "windows",
+  "browser": "chrome",
+  "browser_version": "126.0.0.0",
+  "platform": "Win32",
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 2560,
+    "height": 1440
+  },
+  "screen": {
+    "width": 2560,
+    "height": 1440,
+    "avail_width": 2560,
+    "avail_height": 1400,
+    "device_pixel_ratio": 1
+  },
+  "locale": "en-US",
+  "timezone": "America/New_York",
+  "languages": [
+    "en-US",
+    "en"
+  ],
+  "webgl": {
+    "vendor": "NVIDIA Corporation",
+    "renderer": "NVIDIA GeForce RTX 3070/PCIe/SSE2"
+  },
+  "hardware_concurrency": 8,
+  "device_memory": 16,
+  "plugins": [
+    "Chrome PDF Plugin",
+    "Chrome PDF Viewer",
+    "Native Client"
+  ],
+  "fonts": [
+    "Arial",
+    "Arial Black",
+    "Calibri",
+    "Cambria",
+    "Candara",
+    "Comic Sans MS",
+    "Consolas",
+    "Constantia",
+    "Corbel",
+    "Courier New",
+    "Georgia",
+    "Impact",
+    "Lucida Console",
+    "Microsoft Sans Serif",
+    "Palatino Linotype",
+    "Segoe UI",
+    "Segoe UI Light",
+    "Segoe UI Semibold",
+    "Tahoma",
+    "Times New Roman",
+    "Trebuchet MS",
+    "Verdana"
+  ],
+  "connection": {
+    "type": "ethernet",
+    "effective_type": "4g",
+    "downlink": 50,
+    "rtt": 20
+  }
+}

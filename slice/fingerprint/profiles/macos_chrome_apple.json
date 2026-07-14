@@ -1,0 +1,75 @@
+{
+  "os": "macos",
+  "browser": "chrome",
+  "browser_version": "126.0.0.0",
+  "platform": "MacIntel",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "screen": {
+    "width": 1440,
+    "height": 900,
+    "avail_width": 1440,
+    "avail_height": 875,
+    "device_pixel_ratio": 2
+  },
+  "locale": "en-US",
+  "timezone": "America/Los_Angeles",
+  "languages": [
+    "en-US",
+    "en"
+  ],
+  "webgl": {
+    "vendor": "Apple",
+    "renderer": "Apple M2"
+  },
+  "hardware_concurrency": 8,
+  "device_memory": 16,
+  "plugins": [
+    "Chrome PDF Plugin",
+    "Chrome PDF Viewer",
+    "Native Client"
+  ],
+  "fonts": [
+    "American Typewriter",
+    "Apple Chancery",
+    "Arial",
+    "Arial Black",
+    "Avenir",
+    "Avenir Next",
+    "Baskerville",
+    "Big Caslon",
+    "Chalkboard",
+    "Cochin",
+    "Comic Sans MS",
+    "Copperplate",
+    "Courier New",
+    "Didot",
+    "Futura",
+    "Geneva",
+    "Georgia",
+    "Gill Sans",
+    "Helvetica",
+    "Helvetica Neue",
+    "Hoefler Text",
+    "Impact",
+    "Lucida Grande",
+    "Menlo",
+    "Monaco",
+    "Optima",
+    "Palatino",
+    "SF Pro",
+    "Skia",
+    "Times New Roman",
+    "Trebuchet MS",
+    "Verdana"
+  ],
+  "connection": {
+    "type": "wifi",
+    "effective_type": "4g",
+    "downlink": 20,
+    "rtt": 30
+  }
+}
